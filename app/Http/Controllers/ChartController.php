@@ -72,9 +72,9 @@ class ChartController extends Controller
             'jumlah_buku' => $jum_skrg
         ]);
         if ($simpan) {
-            return redirect('home')->with('success', 'Data Berhasil Disimpan');
+            return redirect('chart')->with('success', 'Data Berhasil Disimpan');
         } else {
-            return redirect('chart/' . $request->id_buku)->with('error', 'Data Gagal Disimpan');
+            return redirect('chart' . $request->id_buku)->with('error', 'Data Gagal Disimpan');
         }
     }
 

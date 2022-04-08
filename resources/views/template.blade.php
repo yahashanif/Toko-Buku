@@ -108,7 +108,6 @@
     </section>
     {{-- alert dialog --}}
 @if (session('success') == true)
-{
 <script>
     Swal.fire({
         position: 'top-end',
@@ -119,7 +118,6 @@
     })
 
 </script>
-}
 
 @endif
 <div class="modal fade" id="smallModal" tabindex="-1">

@@ -53,7 +53,7 @@ class TransactionController extends Controller
               
                 $c->delete();
             }
-            return redirect('chart')->with('success','Data berhasil ditambahkan');
+            return redirect('transaksi')->with('success','Data berhasil ditambahkan');
         }else{
             return redirect('chart')->with('error','Data gagal ditambahkan');
         }
