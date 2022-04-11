@@ -18,7 +18,7 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="{{route('chart')}}">
           <i class="bi bi-bag-check-fill"></i>
-          <span>Chart</span>
+          <span>Cart</span>
         </a>
       </li><!-- End Dashboard Nav -->
       <li class="nav-item">
