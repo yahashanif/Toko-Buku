@@ -167,7 +167,7 @@ class BukuController extends Controller
 
     public function diskon()
     {
-        $data['buku'] =Buku::leftJoin('diskons', 'diskons.id_buku', '=', 'bukus.id')->whereNull('diskons.id_buku')->get(['bukus.*']);
+        $data['buku'] =Buku::all();
 
         $data['diskon'] = Diskon::with(['buku'])->get();
         // dd($data);

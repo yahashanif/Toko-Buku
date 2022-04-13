@@ -157,9 +157,9 @@ Cart
                         <label for="inputText" class="col-sm-6 col-form-label">Bayar</label>
                         <label for="inputText" class="col-sm-1 col-form-label">Rp.</label>
                         <div class="col-sm-4">
-                            <input type="number" min="0" max="" id="bayar" name="bayar" class="form-control" />
+                            <input type="number" min="0" max="" id="bayar" name="bayar" onkeyup="kembali();"  class="form-control" />
                         </div>
-                       <a class="col-sm-1 btn btn-primary" onclick="kembali()">Cek</a>
+                       
                     </div>
                     <div class="row mb-3">
                         <label for="inputText" class="col-sm-6 col-form-label">Kembali</label>
@@ -187,8 +187,17 @@ Cart
     </div>
    
 </div>
-
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script>
+$(document).ready(function(){
+    $("#bayar").on("input", function(){
+        // Print entered value in a div box
+       kembali();
+    });
+});
+</script>
+<script>
+
     function kembali(){
         var total = document.getElementById('total').value;
         var bayar = document.getElementById('bayar').value;
