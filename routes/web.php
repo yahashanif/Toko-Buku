@@ -53,6 +53,7 @@ Route::group(['middleware' =>['web','auth:login']],function(){
     
     Route::get('transaksi',[TransactionController::class,'index'])->name('transaksi');
     Route::get('detail-transaksi/{id}',[TransactionController::class,'detail'])->name('detail-transaksi');
+    Route::get('cetak-struck/{id}',[TransactionController::class,'cetak_pdf'])->name('cetak-struck');
 
     Route::post('logout',[UserController::class,'keluar'])->name('logout');
 

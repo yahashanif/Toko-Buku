@@ -13,6 +13,7 @@ class ChartController extends Controller
     public function index($id)
     {
         $data['buku'] = Buku::whereId($id)->with(['kategori'])->first();
+        $data['diskon_buku'] = Diskon::where('id_buku',$id)->get();
         $data['diskon'] = Diskon::where('id_buku', $id)->with(['buku'])->first();
         $data['chart'] = Chart::with(['buku', 'diskon'])->get();
         $data['input'] = true;

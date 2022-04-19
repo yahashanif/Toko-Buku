@@ -16,7 +16,7 @@ Detail Transaksi
 @foreach ($transaksi as $item => $isi)
 <div class="row">
     <div class="col-xl-4">
-        <div class="card">
+        <div class="card" id="div1">
             <div class="card-body">
                 {{-- <div class="row">
                     <div class="col-lg-4 col-md-4 label ">{{$item}}</div>
@@ -65,11 +65,28 @@ Detail Transaksi
                     <div class="col-lg-1 col-md-1 label ">:</div>
                     <div class="col-lg-7 col-md-7">{{$isi->user()->first()->username}}</div>
                 </div>
+                <div id="hidden" >
+                    <hr>
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 label ">Item</div>
+                    </div>
 
+                    @foreach ($isi->detail_transaction as $i => $data)
 
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 label ">Buku {{$i+1}}</div>
+                        <div class="col-lg-1 col-md-1 label ">:</div>
+                        <div class="col-lg-7 col-md-7">{{$data->buku->judul}}</div>
+                    </div>
+                    @endforeach
+                </div>
+                
+                
+                
             </div>
         </div>
     </div>
+    <button class="btn btn-primary" onclick="printContent('div1')">Print Struk</button>
 </div>
 <div class="col-xl-8">
     <div class="card">
@@ -112,13 +129,16 @@ Detail Transaksi
                     <div class="row mb-3">
                         <label for="inputText" class="col-sm-2 col-form-label">Subtotal</label>
                         <div class="col-sm-10">
-                            <strong for="inputText" class="col col-form-label text-success">: Rp. {{number_format($data->sub_total,0,',','.')}} </strong>
+                            <strong for="inputText" class="col col-form-label text-success">: Rp.
+                                {{number_format($data->sub_total,0,',','.')}} </strong>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <label for="inputText" class="col-sm-2 col-form-label">Diskon</label>
                         <div class="col-sm-10">:
-                            <strong for="inputText" class="col col-form-label <?= $data->id_diskon != null ? 'text-success' : 'text-danger' ?>"> <?= $data->id_diskon != null ? $data->diskon->diskon."%"  : '-'?> </strong>
+                            <strong for="inputText"
+                                class="col col-form-label <?= $data->id_diskon != null ? 'text-success' : 'text-danger' ?>">
+                                <?= $data->id_diskon != null ? $data->diskon->diskon."%"  : '-'?> </strong>
                         </div>
                     </div>
                     <hr>
@@ -131,5 +151,16 @@ Detail Transaksi
 </div>
 @endforeach
 
+<script>
+    function printContent(el) {
+        document.getElementById("hidden").style.display = "block";
+        var restorepage = document.body.innerHTML;
+        var printcontent = document.getElementById(el).innerHTML;
+        document.body.innerHTML = printcontent;
+        window.print();
+        document.body.innerHTML = restorepage;
+    }
+
+</script>
 
 @endsection

@@ -84,7 +84,7 @@ class BukuController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return redirect('detail-buku',$id)
+            return redirect('detail-buku', $id)
                 ->withErrors($validator)
                 ->withInput();
         }
@@ -167,7 +167,7 @@ class BukuController extends Controller
 
     public function diskon()
     {
-        $data['buku'] =Buku::all();
+        $data['buku'] = Buku::all();
 
         $data['diskon'] = Diskon::with(['buku'])->get();
         // dd($data);
@@ -198,7 +198,8 @@ class BukuController extends Controller
         }
     }
 
-    public function deleteDiskon($id){
+    public function deleteDiskon($id)
+    {
         $delete = Diskon::find($id);
         $delete->delete();
 
@@ -209,18 +210,20 @@ class BukuController extends Controller
         }
     }
 
-    public function detail($id){
+    public function detail($id)
+    {
         $data['kategori'] = Kategori::all();
         $data['buku'] = Buku::where('id', $id)->first();
-        return view('page.detailBuku',$data);
+        return view('page.detailBuku', $data);
     }
 
-    public function tambahStok(Request $request,$id){
+    public function tambahStok(Request $request, $id)
+    {
         $validator = Validator::make($request->all(), [
             'jumlah' => 'required',
         ]);
         if ($validator->fails()) {
-            return redirect('detail-buku',$id)
+            return redirect('detail-buku', $id)
                 ->withErrors($validator)
                 ->withInput();
         }
@@ -232,7 +235,9 @@ class BukuController extends Controller
         if ($buku) {
             return redirect('home')->with('success', 'Sukses Tambah Stok');
         } else {
-            return redirect('detail-buku',$id)->with('error', 'Gagal Tambah Stok');
+            return redirect('detail-buku', $id)->with('error', 'Gagal Tambah Stok');
         }
     }
+
+   
 }

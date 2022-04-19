@@ -30,7 +30,7 @@ Transaksi
             <th scope="col">Total</th>
             <th scope="col">Bayar</th>
             <th scope="col">Kembali</th>
-            <th scope="col">Aksi</th>
+            <th scope="col">Info</th>
           </tr>
         </thead>
         <tbody>

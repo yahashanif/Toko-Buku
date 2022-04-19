@@ -71,10 +71,12 @@ Cart
 
 
                     <div class="row mb-3">
+                        @foreach ($diskon_buku as $j => $diskon)
                         <div class="col-sm-10">
                             <label for="inputText"
                                 class="col-sm-10 col-form-label"><?= $diskon != null ? "<span class='text-success'>Diskon $diskon->diskon% untuk Minimal Pembelian $diskon->min_pembelian </span>" : "<span class='text-danger'>Tidak Ada Diskon</span>" ?></label>
                         </div>
+                        @endforeach
                     </div>
                     <div class="row mb-3">
                         <label for="inputText" class="col-sm-2 col-form-label">SubTotal</label>
@@ -156,7 +158,7 @@ Cart
                     <div class="row mb-3">
                         <label for="inputText" class="col-sm-6 col-form-label">Bayar</label>
                         <label for="inputText" class="col-sm-1 col-form-label">Rp.</label>
-                        <div class="col-sm-4">
+                        <div class="col-sm-5">
                             <input type="number" min="0" max="" id="bayar" name="bayar" onkeyup="kembali();"  class="form-control" />
                         </div>
                        
